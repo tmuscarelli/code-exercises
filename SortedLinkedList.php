@@ -11,16 +11,16 @@ class Node {
 
 class SortedLinkedList {
     private $head = null;
-    private $type = null;
+    private $_type = null;
 
     public function insert($value) {
-        $t = gettype($value);
-        if (!in_array($t, ['integer', 'string'])) {
+        $type = gettype($value);
+        if (!in_array($type, ['integer', 'string'])) {
             throw new Exception("Only int or string allowed");
         }
-        if ($this->type === null) {
-            $this->type = $t;
-        } elseif ($this->type !== $t) {
+        if ($this->_type === null) {
+            $this->_type = $type;
+        } elseif ($this->_type !== $type) {
             throw new Exception("Cannot mix int and string");
         }
 
@@ -39,6 +39,24 @@ class SortedLinkedList {
         $cur->next = $node;
     }
 
+    public function delete($value) {
+        if ($this->head === null) return;
+
+        if ($this->head->value === $value) {
+            $this->head = $this->head->next;
+            return;
+        }
+
+        $cur = $this->head;
+        while ($cur->next && $cur->next->value !== $value) {
+            $cur = $cur->next;
+        }
+
+        if ($cur->next) {
+            $cur->next = $cur->next->next;
+        }
+    }
+
     public function printList() {
         $cur = $this->head;
         while ($cur) {
@@ -55,5 +73,6 @@ $l = new SortedLinkedList();
 $l->insert(5);
 $l->insert(2);
 $l->insert(8);
-$l->printList(); // 2 5 8
+$l->delete(5);
+$l->printList(); // 2 8
 */
