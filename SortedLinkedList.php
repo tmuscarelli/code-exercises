@@ -50,8 +50,10 @@ class SortedLinkedList {
 }
 
 // Example
+/*
 $l = new SortedLinkedList();
 $l->insert(5);
 $l->insert(2);
 $l->insert(8);
 $l->printList(); // 2 5 8
+*/
