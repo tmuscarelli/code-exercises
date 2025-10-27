@@ -75,4 +75,10 @@ $l->insert(2);
 $l->insert(8);
 $l->delete(5);
 $l->printList(); // 2 8
-*/
+
+Example with strings
+$list = new SortedLinkedList();
+$list->insert("pear");
+$list->insert("apple");
+$list->insert("orange");
+$list->printList(); // Output: apple -> orange -> pear
